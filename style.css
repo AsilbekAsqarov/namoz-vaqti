@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  display: inline-block;
+  color: green;
+}
+.logo img {
+  position: absolute;
+  margin-top: 10px;
+}
+.logo h1 {
+  margin-top: 10px;
+  margin-left: 60px;
+}
+.logo h3 {
+  margin-left: 60px;
+}
+.local-time {
+  float: right;
+  margin-top: 70px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  color: blueviolet;
+}
+.juma-time {
+  text-align: center;
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  color: green;
+  display: none;
+}
+
+.asosiy-vaqt {
+  background-image: url(./Img/asosiy-vaqt-logo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 25px;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+.asosiy-vaqt h2 {
+  margin-top: 10px;
+  display: inline-block;
+}
+.asosiy-vaqt p {
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+}
+
+.asosiy-table-div {
+  display: grid;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.asosiy-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.asosiy-table td {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  border-bottom: 1px solid green;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.active {
+  background-color: rgb(1, 83, 1);
+  color: white;
+}
+.oylik-table-div {
+  margin-top: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.oylik-table-div h3 {
+  margin-bottom: 20px;
+}
+.oylik-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.oylik-table th {
+  border-bottom: 1px solid aquamarine;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: aquamarine;
+  font-weight: bolder;
+}
+.oylik-table td {
+  border-bottom: 1px solid green;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.icon {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.icon i {
+  color: red;
+}
+.icon a {
+  text-decoration: none;
+  color: green;
+  margin-left: 5px;
+}
+footer {
+  background-color: darkgray;
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+}
+
+/*DESKTOP version*/
+@media only screen and (max-width: 1200px) {
+}
+/* NOTEBOOK */
+@media only screen and (max-width: 992px) {
+  .oylik-table-div {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+/* TABLE */
+@media only screen and (max-width: 768px) {
+  .oylik-table-div {
+    margin-top: 50px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+}
+/* PHONE */
+@media only screen and (max-width: 576px) {
+  .asosiy-table td {
+    font-size: 15px;
+  }
+  .oylik-table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .oylik-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .local-time {
+    margin-top: 0;
+  }
+  .asosiy-table td {
+    font-size: 12px;
+  }
+  .asosiy-vaqt p {
+    font-size: 12px;
+  }
+  .juma-time {
+    font-size: 10px;
+  }
+}
+
+/* LITTLE PHONE */
+@media only screen and (max-width: 375px) {
+}
