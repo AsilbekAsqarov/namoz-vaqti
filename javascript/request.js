@@ -27,7 +27,7 @@ function Location() {
       fetch(locUrl)
         .then((res) => res.json())
         .then((data) => {
-          city.innerHTML = `${data.city}, ${data.locality}`;
+          city.innerHTML = `${data.city}`;
         })
         .catch(() => {
           city.innerHTML = "Joylashuvni olib bo'lmadi";
