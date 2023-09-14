@@ -184,7 +184,7 @@ const namazMons = (data) => {
           setTimeout(function () {
             clearInterval(getXufton);
           }, 1000);
-        } else if (soat >= xufton && soat > bomdod) {
+        } else if (soat >= "00:00") {
           const getBomdod = setInterval(function () {
             startTime(bomdod);
           }, 1000);
