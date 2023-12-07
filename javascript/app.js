@@ -21,7 +21,6 @@ const footerTime = document.getElementById("footer-time");
 const jumaTime = document.querySelector(".juma-time");
 //Oy-kun-yil
 const oylar = [
-  "Dekabr",
   "Yanvar",
   "Fevral",
   "Mart",
@@ -33,6 +32,7 @@ const oylar = [
   "Sentyabr",
   "Oktyabr",
   "Noyabr",
+  "Dekabr",
 ];
 const hijriOylar = [
   "Zulhijja",
