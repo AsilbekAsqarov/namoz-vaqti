@@ -51,6 +51,7 @@ const hijriOylar = [
 
 const namazMons = (data) => {
   const result = data.data;
+  console.log(result);
   let s = new Date();
   let days = s.getDay();
   if (days == 5) {
