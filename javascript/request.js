@@ -6,10 +6,10 @@ const getApi = (lat, lon) => {
   let mon = now.getMonth();
   let months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   let mons = months[mon];
-  const url = `https://api.aladhan.com/v1/calendar/${year}/${mons}?latitude=${lat}&longitude=${lon}&method=3`;
+  const url = `https://api.aladhan.com/v1/calendar/${year}/${mons}?latitude=${lat}&longitude=${lon}&method=2`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => namazMons(data))
+    .then((data) => namazMons(data) console.log(data))
     .catch(() => {
       alert("Qandaydur xatolik yuz berdi...");
     });
