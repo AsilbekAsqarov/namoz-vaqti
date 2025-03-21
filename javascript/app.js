@@ -52,6 +52,15 @@ const hijriOylar = [
 const namazMons = (data) => {
   const result = data.data;
   console.log(result);
+  function Gotime(result, Intime){
+    const Ktime = new Date(`1970-01-01T${result}:00Z`);
+
+    Ktime.setMinutes(Ktime.getminutes() + Intime);
+    return
+    Ktime.toLocaleTimeString([], {
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
   let s = new Date();
   let days = s.getDay();
   if (days == 5) {
@@ -72,6 +81,8 @@ const namazMons = (data) => {
     let peshin = pesh.slice(0, 5);
     let as = time.timings.Asr;
     let asr = as.slice(0, 5);
+    const asrTime = Gotime(asr , 2)
+    console.log("To'g'ri:", asrTime)
     let sho = time.timings.Maghrib;
     let shom = sho.slice(0, 5);
     let xuf = time.timings.Isha;
