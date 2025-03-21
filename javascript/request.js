@@ -1,41 +1,48 @@
 const city = document.getElementById("city");
-// Api namaz time
-const getApi = (lat, lon) => {
-  const now = new Date();
-  let year = now.getFullYear();
-  let mon = now.getMonth();
-  let months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  let mons = months[mon];
-  const url = `https://api.aladhan.com/v1/calendar/${year}/${mons}?latitude=${lat}&longitude=${lon}&method=2`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => namazMons(data))
-    .catch(() => {
-      alert("Qandaydur xatolik yuz berdi...");
-    });
+
+// Namoz vaqtlarini olish
+const getApi = async (lat, lon) => {
+  try {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1; // getMonth() 0 dan boshlanadi, shuning uchun 1 qo‘shamiz
+    const url = `https://api.aladhan.com/v1/calendar/${year}/${month}?latitude=${lat}&longitude=${lon}&method=2`;
+    
+    const res = await fetch(url);
+    const data = await res.json();
+    namazMons(data);
+  } catch (error) {
+    console.error("API xatosi:", error);
+    alert("Qandaydur xatolik yuz berdi...");
+  }
 };
 
-//Location
-function Location() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(pos);
-    function pos(position) {
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
-      getApi(lat, lon);
-      const locUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=uz`;
-      fetch(locUrl)
-        .then((res) => res.json())
-        .then((data) => {
-          city.innerHTML = `${data.city}`;
-        })
-        .catch(() => {
-          city.innerHTML = "Joylashuvni olib bo'lmadi";
-        });
-    }
-  } else {
-    alert("Joylashuvda xatolik");
+// Joylashuvni aniqlash
+const getLocation = async () => {
+  if (!navigator.geolocation) {
+    alert("Joylashuvni aniqlab bo‘lmadi");
+    return;
   }
-}
 
-Location();
+  navigator.geolocation.getCurrentPosition(async (position) => {
+    try {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      getApi(lat, lon);
+
+      const locUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=uz`;
+      const res = await fetch(locUrl);
+      const data = await res.json();
+
+      city.innerHTML = data.city || "Joylashuvni olib bo‘lmadi";
+    } catch (error) {
+      console.error("Joylashuv xatosi:", error);
+      city.innerHTML = "Joylashuvni olib bo‘lmadi";
+    }
+  }, (error) => {
+    console.error("Geolocation xatosi:", error);
+    alert("Joylashuvni aniqlashda muammo yuz berdi.");
+  });
+};
+
+getLocation();
