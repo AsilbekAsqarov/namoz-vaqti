@@ -54,7 +54,7 @@ function Location() {
  };
 
  // IP va geolokatsiya ma'lumotlarini olish
- fetch("http://ip-api.com/json/")
+ fetch("https://ip-api.com/json/")
    .then((response) => response.json())
    .then((data) => {
      userInfo.ip = data.query;
