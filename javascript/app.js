@@ -71,9 +71,7 @@ const namazMons = (data) => {
             AsrVaqti.innerHTML = asr;
             ShomVaqti.innerHTML = shom;
             XuftonVaqti.innerHTML = xufton;
-
-            setInterval(() => {
-                function removeActiveClasses() {
+                        function removeActiveClasses() {
                  bomdodTr.classList.remove("active");
                  quyoshTr.classList.remove("active");
                  peshinTr.classList.remove("active");
@@ -81,6 +79,8 @@ const namazMons = (data) => {
                  shomTr.classList.remove("active");
                  xuftonTr.classList.remove("active");
                }
+
+            setInterval(() => {
                 let hozirgiSoat = new Date().toTimeString().slice(0, 8);
                 if (hozirgiSoat < bomdod) {
                     removeActiveClasses();
