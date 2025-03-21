@@ -73,39 +73,47 @@ const namazMons = (data) => {
             XuftonVaqti.innerHTML = xufton;
 
             setInterval(() => {
+                function removeActiveClasses() {
+                 bomdodTr.classList.remove("active");
+                 quyoshTr.classList.remove("active");
+                 peshinTr.classList.remove("active");
+                 asrTr.classList.remove("active");
+                 shomTr.classList.remove("active");
+                 xuftonTr.classList.remove("active");
+               }
                 let hozirgiSoat = new Date().toTimeString().slice(0, 8);
                 if (hozirgiSoat < bomdod) {
-                    xuftonTr.classList.remove("active");
+                    removeActiveClasses();
                     bomdodTr.classList.add("active");
                     NamozVaqti.innerHTML = `Bomdod vaqti`;
                     NamozInfo.innerHTML = "Quyoshgacha:";
                     startTime(quyosh);
                 } else if (hozirgiSoat < quyosh) {
-                    bomdodTr.classList.remove("active");
+                    removeActiveClasses();
                     quyoshTr.classList.add("active");
                     NamozVaqti.innerHTML = `Quyosh vaqti`;
                     NamozInfo.innerHTML = "Peshingacha:";
                     startTime(peshin);
                 } else if (hozirgiSoat < peshin) {
-                    quyoshTr.classList.remove("active");
+                    removeActiveClasses();
                     peshinTr.classList.add("active");
                     NamozVaqti.innerHTML = `Peshin vaqti`;
                     NamozInfo.innerHTML = "Asrgacha:";
                     startTime(asr);
                 } else if (hozirgiSoat < asr) {
-                    peshinTr.classList.remove("active");
+                    removeActiveClasses();
                     asrTr.classList.add("active");
                     NamozVaqti.innerHTML = `Asr vaqti`;
                     NamozInfo.innerHTML = "Shomgacha:";
                     startTime(shom);
                 } else if (hozirgiSoat < shom) {
-                    asrTr.classList.remove("active");
+                    removeActiveClasses();
                     shomTr.classList.add("active");
                     NamozVaqti.innerHTML = `Shom vaqti`;
                     NamozInfo.innerHTML = "Xuftongacha:";
                     startTime(xufton);
                 } else {
-                    shomTr.classList.remove("active");
+                    removeActiveClasses();
                     xuftonTr.classList.add("active");
                     NamozVaqti.innerHTML = `Xufton vaqti`;
                     NamozInfo.innerHTML = "Bomdodgacha:";
