@@ -51,7 +51,6 @@ const hijriOylar = [
 
 const namazMons = (data) => {
   const result = data.data;
-  console.log(result);
   let s = new Date();
   let days = s.getDay();
   if (days == 5) {
@@ -84,23 +83,23 @@ const namazMons = (data) => {
     let hijriyYil = time.date.hijri.year;
     let oy = time.date.gregorian.month.number;
     let manba = time.meta.method.name;
-    footerTime.innerHTML = Namoz vaqtlari: ${milodiyYil};
-    oylikInfo.innerHTML = ${oylar[oy]} ${milodiyYil};
+    footerTime.innerHTML = `Namoz vaqtlari: ${milodiyYil}`;
+    oylikInfo.innerHTML = `${oylar[oy]} ${milodiyYil}`;
     const tr = document.createElement("tr");
-    tr.innerHTML = 
+    tr.innerHTML = `
    <td>${milodiyKun}</td>
    <td>${bomdod}</td>
    <td>${quyosh}</td>
    <td>${peshin}</td>
    <td>${asr}</td>
    <td>${shom}</td>
-   <td>${xufton}</td>;
+   <td>${xufton}</td>`;
     oylikTable.appendChild(tr);
     //sekundamer
     function startTime(namazTime) {
       let bugun = new Date();
       let date = bugun.getDate() + 1;
-      let ApiVaqti = ${milodiyOy} ${date} ${milodiyYil} ${namazTime}:00;
+      let ApiVaqti = `${milodiyOy} ${date} ${milodiyYil} ${namazTime}:00`;
       let vaqt = new Date(ApiVaqti);
       let natija = vaqt - bugun;
       let h = Math.floor((natija % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -109,11 +108,11 @@ const namazMons = (data) => {
       let M = m < 10 ? "0" + m : m;
       let s = Math.floor((natija % (1000 * 60)) / 1000);
       let S = s < 10 ? "0" + s : s;
-      NamozQoldiq.innerHTML = ${H}:${M}:${S};
-      return ${H}:${M}:${S};
+      NamozQoldiq.innerHTML = `${H}:${M}:${S}`;
+      return `${H}:${M}:${S}`;
     }
     if (kunApi == kun) {
-      KunHtml.innerHTML = Milodiy: ${milodiyKun}-${oylar[oy]}, ${milodiyYil}, Hijriy: ${hijriyKun}-${hijriOylar[hijriyOy]}, ${hijriyYil};
+      KunHtml.innerHTML = `Milodiy: ${milodiyKun}-${oylar[oy]}, ${milodiyYil}, Hijriy: ${hijriyKun}-${hijriOylar[hijriyOy]}, ${hijriyYil}`;
       setInterval(function () {
         let setDate = new Date();
         let hours =
@@ -128,13 +127,13 @@ const namazMons = (data) => {
           setDate.getSeconds() < 10
             ? "0" + setDate.getSeconds()
             : setDate.getSeconds();
-        localTime.innerHTML = Mahaliy vaqt:${hours}:${minutes}:${seconds};
-        let soat = ${hours}:${minutes}:${seconds};
+        localTime.innerHTML = `Mahaliy vaqt:${hours}:${minutes}:${seconds}`;
+        let soat = `${hours}:${minutes}:${seconds}`;
         if (soat >= bomdod && soat < quyosh) {
           const getQuyosh = setInterval(function () {
             startTime(quyosh);
           }, 1000);
-          NamozVaqti.innerHTML = Bomdod vaqti;
+          NamozVaqti.innerHTML = `Bomdod vaqti`;
           NamozInfo.innerHTML = "Quyoshgacha:";
           xuftonTr.classList.remove("active");
           bomdodTr.classList.add("active");
@@ -145,7 +144,7 @@ const namazMons = (data) => {
           const getPeshin = setInterval(function () {
             startTime(peshin);
           }, 1000);
-          NamozVaqti.innerHTML = Quyosh vaqti;
+          NamozVaqti.innerHTML = `Quyosh vaqti`;
           NamozInfo.innerHTML = "Peshingacha:";
           bomdodTr.classList.remove("active");
           quyoshTr.classList.add("active");
@@ -156,7 +155,7 @@ const namazMons = (data) => {
           const getAsr = setInterval(function () {
             startTime(asr);
           }, 1000);
-          NamozVaqti.innerHTML = Peshin vaqti;
+          NamozVaqti.innerHTML = `Peshin vaqti`;
           NamozInfo.innerHTML = "Asrgacha:";
           quyoshTr.classList.remove("active");
           peshinTr.classList.add("active");
@@ -167,7 +166,7 @@ const namazMons = (data) => {
           const getShom = setInterval(function () {
             startTime(shom);
           }, 1000);
-          NamozVaqti.innerHTML = Asr vaqti;
+          NamozVaqti.innerHTML = `Asr vaqti`;
           NamozInfo.innerHTML = "Shomgacha:";
           peshinTr.classList.remove("active");
           asrTr.classList.add("active");
@@ -178,7 +177,7 @@ const namazMons = (data) => {
           const getXufton = setInterval(function () {
             startTime(xufton);
           }, 1000);
-          NamozVaqti.innerHTML = Shom vaqti;
+          NamozVaqti.innerHTML = `Shom vaqti`;
           NamozInfo.innerHTML = "Xuftongacha:";
           asrTr.classList.remove("active");
           shomTr.classList.add("active");
@@ -189,7 +188,7 @@ const namazMons = (data) => {
           const getBomdod = setInterval(function () {
             startTime(bomdod);
           }, 1000);
-          NamozVaqti.innerHTML = Xufton vaqti;
+          NamozVaqti.innerHTML = `Xufton vaqti`;
           NamozInfo.innerHTML = "Bomdodgacha:";
           shomTr.classList.remove("active");
           xuftonTr.classList.add("active");
