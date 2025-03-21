@@ -74,7 +74,6 @@ const namazMons = (data) => {
 
             setInterval(() => {
                 let hozirgiSoat = new Date().toTimeString().slice(0, 8);
-                    localTime.innerHTML = Mahaliy vaqt:${hours}:${minutes}:${seconds};
                 if (hozirgiSoat < bomdod) {
                     xuftonTr.classList.remove("active");
                     bomdodTr.classList.add("active");
