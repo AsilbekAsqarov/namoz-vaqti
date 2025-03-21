@@ -39,6 +39,12 @@ const namazMons = (data) => {
     let result = data.data;
     let d = new Date();
     let bugunKun = d.getDate();
+    let days = d.getDay();
+     if (days == 5) {
+    jumaTime.style.display = "block";
+  } else {
+    jumaTime.style.display = "none";
+  }
 
     oylikTable.innerHTML = ""; // Eski jadvalni tozalash
 
@@ -68,27 +74,40 @@ const namazMons = (data) => {
 
             setInterval(() => {
                 let hozirgiSoat = new Date().toTimeString().slice(0, 8);
+                    localTime.innerHTML = Mahaliy vaqt:${hours}:${minutes}:${seconds};
                 if (hozirgiSoat < bomdod) {
+                    xuftonTr.classList.remove("active");
+                    bomdodTr.classList.add("active");
                     NamozVaqti.innerHTML = `Bomdod vaqti`;
                     NamozInfo.innerHTML = "Quyoshgacha:";
                     startTime(quyosh);
                 } else if (hozirgiSoat < quyosh) {
+                    bomdodTr.classList.remove("active");
+                    quyoshTr.classList.add("active");
                     NamozVaqti.innerHTML = `Quyosh vaqti`;
                     NamozInfo.innerHTML = "Peshingacha:";
                     startTime(peshin);
                 } else if (hozirgiSoat < peshin) {
+                    quyoshTr.classList.remove("active");
+                    peshinTr.classList.add("active");
                     NamozVaqti.innerHTML = `Peshin vaqti`;
                     NamozInfo.innerHTML = "Asrgacha:";
                     startTime(asr);
                 } else if (hozirgiSoat < asr) {
+                    peshinTr.classList.remove("active");
+                    asrTr.classList.add("active");
                     NamozVaqti.innerHTML = `Asr vaqti`;
                     NamozInfo.innerHTML = "Shomgacha:";
                     startTime(shom);
                 } else if (hozirgiSoat < shom) {
+                    asrTr.classList.remove("active");
+                    shomTr.classList.add("active");
                     NamozVaqti.innerHTML = `Shom vaqti`;
                     NamozInfo.innerHTML = "Xuftongacha:";
                     startTime(xufton);
                 } else {
+                    shomTr.classList.remove("active");
+                    xuftonTr.classList.add("active");
                     NamozVaqti.innerHTML = `Xufton vaqti`;
                     NamozInfo.innerHTML = "Bomdodgacha:";
                     startTime(bomdod);
