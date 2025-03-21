@@ -9,7 +9,7 @@ const getApi = (lat, lon) => {
   const url = `https://api.aladhan.com/v1/calendar/${year}/${mons}?latitude=${lat}&longitude=${lon}&method=2`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => namazMons(data) console.log(data))
+    .then((data) => namazMons(data))
     .catch(() => {
       alert("Qandaydur xatolik yuz berdi...");
     });
