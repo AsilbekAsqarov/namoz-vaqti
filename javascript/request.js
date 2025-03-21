@@ -6,7 +6,7 @@ const getApi = (lat, lon) => {
   let mon = now.getMonth();
   let months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   let mons = months[mon];
-  const url = https://api.aladhan.com/v1/calendar/${year}/${mons}?latitude=${lat}&longitude=${lon}&method=2;
+  const url = `https://api.aladhan.com/v1/calendar/${year}/${mons}?latitude=${lat}&longitude=${lon}&method=2`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => namazMons(data))
@@ -23,7 +23,7 @@ function Location() {
       let lat = position.coords.latitude;
       let lon = position.coords.longitude;
       getApi(lat, lon);
-      const locUrl = https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=uz;
+      const locUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=uz`;
       fetch(locUrl)
         .then((res) => res.json())
         .then((data) => {
